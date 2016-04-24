@@ -8,6 +8,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.cisco.cmad.model.BlogUser;
 import com.cisco.cmad.repository.BlogUserRepository;
@@ -51,6 +54,21 @@ public class BlogResource {
     	blogUserRepository.create(blogUser);
     	
 		return blogUser;
+    }
+    
+    @POST
+	@Path("login")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response getAuthentication(MultivaluedMap<String, String> formParam){
+    	System.out.println("BlogResource.getAuthentication() " +formParam.getFirst("username"));
+    	System.out.println("BlogResource.getAuthentication() " +formParam.getFirst("password"));
+    	
+    	if (formParam.getFirst("username").equals("admin")) {
+			return Response.ok().build();
+		}else{
+			return Response.status(Status.NOT_FOUND).build();
+		}
     	
     }
 }

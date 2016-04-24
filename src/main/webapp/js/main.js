@@ -37,9 +37,9 @@
     $("#login-form").validate({
         // Specify the validation rules
         rules: {
-            email: {
+            username: {
                 required: true,
-                email: true
+                minlength: 3
             },
             password: {
                 required: true,
@@ -53,7 +53,10 @@
                 required: "Please provide a password",
                 minlength: "Your password must be at least 5 characters long"
             },
-            email: "Please enter a valid email address",
+            username: {
+                required: "Please provide a username",
+                minlength: "Your username must be at least 5 characters long"
+            },
             agree: "Please accept our policy"
         }
     });
