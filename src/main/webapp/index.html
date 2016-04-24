@@ -52,9 +52,9 @@
               <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                   <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search">
+                      <input type="text" class="form-control" placeholder="Search" id="search">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary searchButton" type="button">Submit</button>
                   </form>
                   <ul class="nav navbar-nav">
                       <li class="active"><a href="index.html">Home</a></li>
@@ -65,6 +65,8 @@
               </nav>
           </div>
         </header>
+
+        <div id="searchMessage" style="display: none; text-align: center;"> </div>
         
         <div class="container">
           <div class="row">
@@ -121,6 +123,7 @@
         <script src="bootstrap-custom/js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/signup.js"></script>
+        <script src="js/search.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

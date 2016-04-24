@@ -14,4 +14,6 @@ public interface BlogUserRepository {
 
 	boolean authenticate(MultivaluedMap<String, String> formParam);
 
+	String findByDescription(String description);
+
 }

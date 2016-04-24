@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
@@ -38,8 +39,6 @@ public class BlogResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<BlogUser> getAllUser(){
-    	
-    	
 		return blogUserRepository.findAllUsers();
     }
     @POST
@@ -72,5 +71,22 @@ public class BlogResource {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
     	
+    }
+    @GET
+    @Path("description")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response searchForDescription(@QueryParam(value = "description") String description){
+    	System.out.println("BlogResource.searchForDescription()" +description);
+    	
+    	String textResponse = blogUserRepository.findByDescription(description);
+    	System.out.println("BlogResource.searchForDescription()" +textResponse);
+    	if (textResponse != null) {
+    		System.out.println("BlogResource.searchForDescription() 1111" );
+			// return Response.ok().entity(textResponse).build();
+    		return Response.status(Status.OK).build();
+		}else{
+			System.out.println("BlogResource.searchForDescription() 2222");
+			return Response.status(Status.BAD_REQUEST).build();
+		}
     }
 }

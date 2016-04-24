@@ -51,4 +51,15 @@ public class BlogUserRepositoryStub implements BlogUserRepository {
 		}
 	}
 
+	@Override
+	public String findByDescription(String description) {
+		// TODO Auto-generated method stub
+		if (description.equals("Hello")) {
+			System.out.println("BlogUserRepositoryStub.findByDescription()");
+			return "You are welcome";
+		}
+		
+		return null;
+	}
+
 }
