@@ -22,14 +22,17 @@ $(function() {
 		$.ajax({
 			type: "POST",
 			contentType: 'application/json',
-			url: "/myresource/activity", /*TODO: Change to proper URL*/
+			url: "webapi/myresource/activity", /*TODO: Change to proper URL*/
 			data: myData,
 			dataType: "json",
+			beforeSend: function (jqXHR, settings) {
+		    	url = settings.url + "?" + settings.data;
+		  	},
 			success: function(data){
 				console.log("Form Submission Sucess" +data);
 			},
 			error:function(data){
-				console.log("Form Submission Failed" +data);
+				console.log("Form Submission Failed" +data +" url: " +url);
 			}
 		});
 
