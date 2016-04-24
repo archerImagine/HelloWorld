@@ -12,11 +12,11 @@ $(function() {
 		var password = $("input#password").val();
 		console.log("password: " +password);
 
-		var myData = {
+		var myData = JSON.stringify({
 			"username" : username,
 			"email" : email,
 			"password" : btoa(password)
-		};
+		});
 
 		console.log("[AniB]: data: " +myData);
 		$.ajax({
