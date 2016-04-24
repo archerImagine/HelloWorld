@@ -30,6 +30,7 @@ $(function() {
 		  	},
 			success: function(data){
 				console.log("Form Submission Sucess" +data);
+				window.location.replace("./html/blogPost.html");
 			},
 			error:function(data){
 				console.log("Form Submission Failed" +data +" url: " +url);
