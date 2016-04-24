@@ -3,6 +3,10 @@ package com.cisco.cmad.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import com.cisco.cmad.model.BlogUser;
 
 public class BlogUserRepositoryStub implements BlogUserRepository {
@@ -36,6 +40,15 @@ public class BlogUserRepositoryStub implements BlogUserRepository {
 		System.out.println("BlogUserRepositoryStub.create() : " +blogUser.getPassword());
 		System.out.println("BlogUserRepositoryStub.create() : " +blogUser.getUserName());
 		
+	}
+
+	@Override
+	public boolean authenticate(MultivaluedMap<String, String> formParam) {
+		if (formParam.getFirst("username").equals("admin") && formParam.getFirst("password").equals("YWRtaW4=")) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }

@@ -64,10 +64,12 @@ public class BlogResource {
     	System.out.println("BlogResource.getAuthentication() " +formParam.getFirst("username"));
     	System.out.println("BlogResource.getAuthentication() " +formParam.getFirst("password"));
     	
-    	if (formParam.getFirst("username").equals("admin")) {
-			return Response.ok().build();
+    	boolean isOk =  blogUserRepository.authenticate(formParam);
+    	
+    	if (isOk) {
+			return Response.status(Status.OK).build();
 		}else{
-			return Response.status(Status.NOT_FOUND).build();
+			return Response.status(Status.BAD_REQUEST).build();
 		}
     	
     }
