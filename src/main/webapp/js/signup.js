@@ -18,6 +18,9 @@ $(function() {
 			"password" : btoa(password)
 		});
 
+		$("#message").text("Please Wait authentication in progress...");
+		$("#message").css('display', 'block');
+
 		console.log("[AniB]: data: " +myData);
 		$.ajax({
 			type: "POST",
@@ -30,10 +33,13 @@ $(function() {
 		  	},
 			success: function(data){
 				console.log("Form Submission Sucess" +data);
+				$("#message").text("Authentication Sucessful !!!!.");
 				window.location.replace("./html/blogPost.html");
 			},
 			error:function(data){
 				console.log("Form Submission Failed" +data +" url: " +url);
+				$("#message").text("Authentication FAILED !!!!.");
+				window.location.replace("./html/login.html");
 			}
 		});
 
